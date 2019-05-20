@@ -1,0 +1,24 @@
+.menu-mobile, .menu-mobile-handle {
+    display: none;
+}
+.main-body {
+    height: 100vh;
+}
+@media screen and (max-width: 980px) {
+    .menu-pc {
+        display: none;
+    }
+    .menu-mobile, .menu-mobile-handle {
+        display: initial;
+    }
+    .main-body {
+        height: auto;
+    }
+}
+.menu-mobile-handle {
+    right: -40px;
+    top: 70px;
+    width: 40px;
+    position: absolute;
+    pointer-events: auto;
+}
