@@ -1,9 +1,12 @@
 <nz-layout>
   <nz-sider class="menu-pc" nzCollapsible [(nzCollapsed)]="isCollapsed"  [nzReverseArrow]="isReverseArrow">
-    <div class="logo"></div>
+    <div class="logo">
+      <img src="../assets/images/logo.jpg"/>
+      <span *ngIf="!isCollapsed">卡比窝</span>
+    </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-menu-item>
-        <span><i nz-icon type="file"></i><span class="nav-text">nav 1</span></span>
+      <li nz-menu-item *ngFor="let item of menu" [routerLink]="menu.router" [routerLinkActive]="'ant-menu-item-selected'">
+        <span><i nz-icon [type]="item.icon"></i><span class="nav-text">{{item.name}}</span></span>
       </li>
     </ul>
   </nz-sider>

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { Menu } from './common/class/menu';
+import { MENU } from './config/menu';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +12,10 @@ export class AppComponent {
   title = 'kabiwo';
   isCollapsed = false;
   isReverseArrow = false;
+  menu: Menu[] = MENU;
   mobileMenu: boolean = false;
   
   switch(): void {
-    console.log(this.isCollapsed)
     this.mobileMenu = !this.mobileMenu;
   }
 }

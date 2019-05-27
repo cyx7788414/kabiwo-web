@@ -1,6 +1,25 @@
 .menu-mobile, .menu-mobile-handle {
     display: none;
 }
+.menu-pc {
+    .logo {
+        padding: 20px;
+        text-align: center;
+        img {
+            width: 100%;
+            display: block;
+            border-radius: 4px;
+        }
+        span {
+            color: #fff;
+            font-size: 32px;
+        }
+    }
+    ul {
+        max-height: calc(100vh - 296px);
+        overflow-y: auto;
+    }
+}
 .main-body {
     height: 100vh;
 }
@@ -11,12 +30,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 32px;
 
         img {
             width: 56px;
             height: 56px;
         }
     }
+}
+.menu-mobile-handle {
+    right: -40px;
+    top: 70px;
+    width: 40px;
+    position: absolute;
+    pointer-events: auto;
 }
 @media screen and (max-width: 980px) {
     .menu-pc {
@@ -31,11 +58,4 @@
     .header {
         display: initial;
     }
-}
-.menu-mobile-handle {
-    right: -40px;
-    top: 70px;
-    width: 40px;
-    position: absolute;
-    pointer-events: auto;
 }
