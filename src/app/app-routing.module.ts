@@ -2,23 +2,38 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { BlogComponent } from './blog/blog.component';
+import { DetailComponent } from './detail/detail.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
   },
-  // {
-  //   path: 'blog'
-  // },
+  {
+    path: 'blog',
+    children: [
+      {
+        path: '',
+        component: BlogComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: 'detail',
+        component: DetailComponent
+      }
+    ]
+  },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
-  // {
-  //   path: '**'
-  // }
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  }
 ];
 
 @NgModule({

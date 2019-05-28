@@ -14,6 +14,10 @@ export class AppComponent {
   isReverseArrow = false;
   menu: Menu[] = MENU;
   mobileMenu: boolean = false;
+
+  constructor(
+  ) {
+  }
   
   switch(): void {
     this.mobileMenu = !this.mobileMenu;

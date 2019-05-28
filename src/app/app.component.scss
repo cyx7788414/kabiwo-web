@@ -38,6 +38,17 @@
         }
     }
 }
+nz-content {
+    margin: 24px 16px 0;
+    >.content {
+        overflow: auto;
+        height: 100%;
+        border-radius: 4px;
+        padding: 24px; 
+        background: #fff; 
+        text-align: center;
+    }
+}
 .menu-mobile-handle {
     right: -40px;
     top: 70px;
