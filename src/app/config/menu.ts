@@ -7,7 +7,7 @@ export const MENU: Menu[] = [
         router: 'home',
     },
     {
-        name: '日志',
+        name: '文章',
         icon: 'book',
         router: 'blog'
     }

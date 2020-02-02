@@ -6,20 +6,20 @@
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
       <li nz-menu-item *ngFor="let item of menu" [routerLink]="item.router" routerLinkActive="ant-menu-item-selected">
-        <span><i nz-icon [type]="item.icon"></i><span class="nav-text">{{item.name}}</span></span>
+        <span><i nz-icon [nzType]="item.icon"></i><span class="nav-text">{{item.name}}</span></span>
       </li>
     </ul>
   </nz-sider>
-  <nz-drawer class="menu-mobile" [nzClosable]="false" [nzVisible]="mobileMenu" nzPlacement="left" >
+  <button class="menu-mobile-handle" nz-button nzType="primary" nzSize="large" (click)="switch()">
+    <i nz-icon nzType="menu-unfold" nzTheme="outline" *ngIf="!mobileMenu"></i>
+    <i nz-icon nzType="menu-fold" nzTheme="outline" *ngIf="mobileMenu"></i>
+  </button>
+  <nz-drawer class="menu-mobile" [nzClosable]="false" [nzVisible]="mobileMenu" nzPlacement="left" (nzOnClose)="mobileCloseMenu()">
     <ul nz-menu nzMode="inline">
       <li nz-menu-item *ngFor="let item of menu" [routerLink]="item.router" routerLinkActive="ant-menu-item-selected">
-        <span><i nz-icon [type]="item.icon"></i><span class="nav-text">{{item.name}}</span></span>
+        <span><i nz-icon [nzType]="item.icon"></i><span class="nav-text">{{item.name}}</span></span>
       </li>
     </ul>
-    <button class="menu-mobile-handle" nz-button nzType="primary" nzSize="large" (click)="switch()">
-      <i nz-icon nzType="menu-unfold" nzTheme="outline" *ngIf="!mobileMenu"></i>
-      <i nz-icon nzType="menu-fold" nzTheme="outline" *ngIf="mobileMenu"></i>
-    </button>
   </nz-drawer>
   <nz-layout class="main-body">
     <nz-header class="header">
@@ -33,6 +33,11 @@
         <router-outlet></router-outlet>
       </div>
     </nz-content>
-    <nz-footer style="text-align: center;">Ant Design ©2019 Implement By Angular</nz-footer>
+    <nz-footer class="footer">
+      <a class="beian" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102000427">
+        <img src="../assets/images/beian.png">
+        <p>鄂公网安备 42011102000427号</p>
+      </a>
+    </nz-footer>
   </nz-layout>
 </nz-layout>

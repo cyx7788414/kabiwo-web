@@ -18,8 +18,13 @@ export class AppComponent {
   constructor(
   ) {
   }
+
+  mobileCloseMenu(): void {
+    this.mobileMenu = false;
+  }
   
   switch(): void {
     this.mobileMenu = !this.mobileMenu;
   }
+
 }

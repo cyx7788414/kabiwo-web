@@ -1,3 +1,31 @@
-<p>
-  blog works!
-</p>
+<h2 nz-title>文章列表</h2>
+<div class="search">
+  <div class="search-item">
+    <nz-select [(ngModel)]="search.order" nzPlaceHolder="排序方式">
+      <nz-option *ngFor="let order of orderTypeList" [nzValue]="order.id" [nzLabel]="order.name"></nz-option>
+    </nz-select>
+  </div>
+  <div class="search-item">
+    <nz-select [(ngModel)]="search.type" nzAllowClear nzPlaceHolder="筛选分类">
+      <nz-option *ngFor="let type of typeList" [nzValue]="type.id" [nzLabel]="type.name"></nz-option>
+    </nz-select>
+  </div>
+  <div class="search-item">
+    <nz-select nzMode="multiple" [(ngModel)]="search.tag" nzPlaceHolder="筛选标签" nzAllowClear [nzMaxTagCount]="0" [nzMaxTagPlaceholder]="tagPlaceHolder">
+      <nz-option *ngFor="let tag of tagList" [nzLabel]="tag.name" [nzValue]="tag.id"></nz-option>
+    </nz-select>
+    <ng-template #tagPlaceHolder let-selectedList>选中{{ selectedList.length }}项</ng-template>
+  </div>
+  <div class="search-item">
+    <input nz-input placeholder="搜索标题" [(ngModel)]="search.name" /> 
+  </div>
+</div>
+<div class="article-list">
+  <nz-list [nzDataSource]="articleList" [nzRenderItem]="item" [nzLoading]="loading">
+    <ng-template #item let-item>
+      <nz-list-item>
+        <h4 nz-title>{{item.name}}</h4>
+      </nz-list-item>
+    </ng-template>
+    </nz-list>
+</div>

@@ -22,6 +22,25 @@
 }
 .main-body {
     height: 100vh;
+    .footer {
+        text-align: center;
+        .beian {
+            display:inline-block;
+            text-decoration:none;
+            height:20px;
+            line-height:20px;
+            img {
+                float: left;
+            }
+            p {
+                float:left;
+                height:20px;
+                line-height:20px;
+                margin: 0px 0px 0px 5px; 
+                color:#939393;
+            }
+        }
+    }
 }
 .header {
     display: none;
@@ -46,11 +65,15 @@ nz-content {
         border-radius: 4px;
         padding: 24px; 
         background: #fff; 
-        text-align: center;
+    }
+}
+.menu-mobile {
+    .menu-mobile-handle {
+        right: -40px;
     }
 }
 .menu-mobile-handle {
-    right: -40px;
+    // right: -40px;
     top: 70px;
     width: 40px;
     position: absolute;
@@ -65,8 +88,12 @@ nz-content {
     }
     .main-body {
         height: auto;
+        min-height: 100vh;
     }
     .header {
         display: initial;
+    }
+    nz-content >.content {
+        min-height: calc(100vh - 160px);
     }
 }

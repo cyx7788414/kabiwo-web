@@ -1,0 +1,26 @@
+.search {
+    .search-item {
+        display: inline-block;
+        margin-right: 15px;
+        width: 200px;
+        >* {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .search {
+        .search-item {
+            margin-right: 0;
+            margin-bottom: 5px;
+            width: 50%;
+            &:nth-child(odd) {
+                padding-right: 5px;
+            }
+            &:nth-child(even) {
+                padding-left: 5px;
+            }
+        }
+    }    
+}
