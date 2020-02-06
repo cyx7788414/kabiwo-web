@@ -39,7 +39,7 @@
             <nz-tag *ngIf="typeObj[item.type]" [nzColor]="typeObj[item.type]._color">{{typeObj[item.type].name}}</nz-tag>
           </div>
           <div class="body">
-            <h4 nz-title>{{item.name}}</h4>
+            <h4 nz-title class="article-name">{{item.name}}</h4>
             <div>
               <span nz-text *ngFor="let tag of item.tag"><code>{{tagObj[tag]?tagObj[tag].name:''}}</code></span>
               <span nz-text nzType="secondary" style="float: right;">发布时间：{{item.create | date: 'yyyy-MM-dd HH:mm:ss'}}</span>

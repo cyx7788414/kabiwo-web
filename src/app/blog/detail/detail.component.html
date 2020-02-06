@@ -2,7 +2,7 @@
   文章详情
   <button nz-button nzType="primary" class="return" routerLink="../../">返回</button>
 </h2>
-<h3 nz-title>{{article?article.name:''}}</h3>
+<h3 nz-title class="article-name">{{article?article.name:''}}</h3>
 <div *ngIf="article">
   <nz-tag *ngIf="typeObj[article.type]" [nzColor]="typeObj[article.type]._color">{{typeObj[article.type].name}}</nz-tag>
   <span nz-text *ngFor="let tag of article.tag"><code>{{tagObj[tag]?tagObj[tag].name:''}}</code></span>

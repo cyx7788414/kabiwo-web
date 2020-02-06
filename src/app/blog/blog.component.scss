@@ -12,7 +12,7 @@
 .search-mobile {
     display: none;
     margin-bottom: 20px;
-    
+
 }
 .article-list {
     .article-item {
@@ -31,6 +31,9 @@
             height: 100%;
             >div {
                 overflow: hidden;
+            }
+            .article-name {
+                word-break: break-all;
             }
         }
     }
