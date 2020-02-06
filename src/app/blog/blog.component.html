@@ -24,7 +24,7 @@
   </div>
 </div>
 <div class="search-mobile">
-  <List [className]="'my-list'" [renderHeader]="renderHeader">
+  <List>
     <ListItem Picker arrow="horizontal" [data]="orderTypeList" [(ngModel)]="searchMobile.order" [extra]="searchMobile.order[0]?searchMobile.order[0].label:'选择'" (ngModelChange)="mobileSearchChange()">排序</ListItem>
     <ListItem Picker arrow="horizontal" [data]="typeListMobile" [(ngModel)]="searchMobile.type" [extra]="searchMobile.type[0]?searchMobile.type[0].label:'选择'" (ngModelChange)="mobileSearchChange()">分类</ListItem>
     <InputItem [clear]="true" placeholder="搜索标题" content="标题" [(ngModel)]="search.name"></InputItem>
