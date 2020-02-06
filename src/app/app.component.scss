@@ -98,8 +98,11 @@ nz-content {
     nz-content{
         margin: 10px 10px 0;
         &>.content {
-            min-height: calc(100vh - 134px);
+            height: calc(100vh - 120px);
             padding: 10px;
         }
+    }
+    nz-footer.footer {
+        padding: 10px 50px;
     }
 }

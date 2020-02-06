@@ -16,7 +16,7 @@
   </button>
   <nz-drawer class="menu-mobile" [nzClosable]="false" [nzVisible]="mobileMenu" nzPlacement="left" (nzOnClose)="mobileCloseMenu()">
     <ul nz-menu nzMode="inline">
-      <li nz-menu-item *ngFor="let item of menu" [routerLink]="item.router" routerLinkActive="ant-menu-item-selected">
+      <li nz-menu-item *ngFor="let item of menu" [routerLink]="item.router" routerLinkActive="ant-menu-item-selected" (click)="mobileCloseMenu()">
         <span><i nz-icon [nzType]="item.icon"></i><span class="nav-text">{{item.name}}</span></span>
       </li>
     </ul>
