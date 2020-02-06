@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
-import { DetailComponent } from './detail/detail.component';
+import { DetailComponent } from './blog/detail/detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
@@ -20,7 +20,7 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'detail',
+        path: 'detail/:id',
         component: DetailComponent
       }
     ]

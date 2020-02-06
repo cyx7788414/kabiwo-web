@@ -29,9 +29,10 @@
       </div>
     </nz-header>
     <nz-content>
-      <div class="content">
+      <div class="content" #content>
         <router-outlet></router-outlet>
       </div>
+      <nz-back-top [nzTarget]="content"></nz-back-top>
     </nz-content>
     <nz-footer class="footer">
       <a class="beian" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011102000427">

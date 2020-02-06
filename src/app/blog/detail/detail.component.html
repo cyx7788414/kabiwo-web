@@ -1,0 +1,21 @@
+<h2 nz-title>
+  文章详情
+  <button nz-button nzType="primary" class="return" routerLink="../../">返回</button>
+</h2>
+<h3 nz-title>{{article?article.name:''}}</h3>
+<div *ngIf="article">
+  <nz-tag *ngIf="typeObj[article.type]" [nzColor]="typeObj[article.type]._color">{{typeObj[article.type].name}}</nz-tag>
+  <span nz-text *ngFor="let tag of article.tag"><code>{{tagObj[tag]?tagObj[tag].name:''}}</code></span>
+</div>
+<div class="info" *ngIf="article">
+  <span nz-text nzType="secondary">作者：{{article.auther || '佚名'}}</span>
+  <span nz-text nzType="secondary">发布时间：{{article.create | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+  <span nz-text nzType="secondary">更新时间：{{article.update | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+</div>
+
+<div class="status">
+  <nz-spin [nzSpinning]="loading" nzSimple>
+    <nz-empty *ngIf="!loading && !article"></nz-empty>
+  </nz-spin>
+</div>
+<div class="markdown-body" [innerHtml]="blogDetailHtml"></div>

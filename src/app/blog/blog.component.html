@@ -2,8 +2,11 @@
 <div class="search">
   <div class="search-item">
     <nz-select [(ngModel)]="search.order" nzPlaceHolder="排序方式">
-      <nz-option *ngFor="let order of orderTypeList" [nzValue]="order.id" [nzLabel]="order.name"></nz-option>
+      <nz-option *ngFor="let order of orderTypeList" [nzValue]="order.value" [nzLabel]="order.label"></nz-option>
     </nz-select>
+  </div>
+  <div class="search-item" style="width: 350px;">
+    <nz-range-picker [nzShowTime]="{ nzFormat: 'HH:mm' }" nzFormat="yyyy-MM-dd HH:mm" [nzPlaceHolder]="['开始时间', '结束时间']" [(ngModel)]="search.range"></nz-range-picker>
   </div>
   <div class="search-item">
     <nz-select [(ngModel)]="search.type" nzAllowClear nzPlaceHolder="筛选分类">
@@ -16,15 +19,37 @@
     </nz-select>
     <ng-template #tagPlaceHolder let-selectedList>选中{{ selectedList.length }}项</ng-template>
   </div>
-  <div class="search-item">
+  <div class="search-item" style="width: 200px;">
     <input nz-input placeholder="搜索标题" [(ngModel)]="search.name" /> 
   </div>
 </div>
+<div class="search-mobile">
+  <List [className]="'my-list'" [renderHeader]="renderHeader">
+    <ListItem Picker arrow="horizontal" [data]="orderTypeList" [(ngModel)]="searchMobile.order" [extra]="searchMobile.order[0]?searchMobile.order[0].label:'选择'" (ngModelChange)="mobileSearchChange()">排序</ListItem>
+    <ListItem Picker arrow="horizontal" [data]="typeListMobile" [(ngModel)]="searchMobile.type" [extra]="searchMobile.type[0]?searchMobile.type[0].label:'选择'" (ngModelChange)="mobileSearchChange()">分类</ListItem>
+    <InputItem [clear]="true" placeholder="搜索标题" content="标题" [(ngModel)]="search.name"></InputItem>
+  </List>
+</div>
 <div class="article-list">
-  <nz-list [nzDataSource]="articleList" [nzRenderItem]="item" [nzLoading]="loading">
+  <nz-list [nzDataSource]="getArticleList()" [nzRenderItem]="item" [nzLoading]="loading">
     <ng-template #item let-item>
       <nz-list-item>
-        <h4 nz-title>{{item.name}}</h4>
+        <div class="article-item" [routerLink]="['./detail', item.id]">
+          <div class="head">
+            <nz-tag *ngIf="typeObj[item.type]" [nzColor]="typeObj[item.type]._color">{{typeObj[item.type].name}}</nz-tag>
+          </div>
+          <div class="body">
+            <h4 nz-title>{{item.name}}</h4>
+            <div>
+              <span nz-text *ngFor="let tag of item.tag"><code>{{tagObj[tag]?tagObj[tag].name:''}}</code></span>
+              <span nz-text nzType="secondary" style="float: right;">发布时间：{{item.create | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+            </div>
+            <div>
+              <span nz-text nzType="secondary" style="margin-left: 5px;">作者：{{item.auther || '佚名'}}</span>
+              <span nz-text nzType="secondary" style="float: right;">更新时间：{{item.update | date: 'yyyy-MM-dd HH:mm:ss'}}</span>
+            </div>
+          </div>
+        </div>
       </nz-list-item>
     </ng-template>
     </nz-list>

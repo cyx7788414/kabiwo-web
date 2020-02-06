@@ -78,6 +78,8 @@ nz-content {
     width: 40px;
     position: absolute;
     pointer-events: auto;
+    z-index: 1;
+    opacity: 0.9;
 }
 @media screen and (max-width: 980px) {
     .menu-pc {
@@ -87,13 +89,17 @@ nz-content {
         display: initial;
     }
     .main-body {
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
+        // min-height: 100vh;
     }
     .header {
         display: initial;
     }
-    nz-content >.content {
-        min-height: calc(100vh - 160px);
+    nz-content{
+        margin: 10px 10px 0;
+        &>.content {
+            min-height: calc(100vh - 134px);
+            padding: 10px;
+        }
     }
 }

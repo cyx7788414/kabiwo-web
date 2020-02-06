@@ -32,6 +32,8 @@
               }
             ],
             "styles": [
+              "node_modules/github-markdown-css/github-markdown.css",
+              "node_modules/ng-zorro-antd-mobile/src/ng-zorro-antd-mobile.min.css",
               "src/theme.less",
               "src/styles.scss"
             ],

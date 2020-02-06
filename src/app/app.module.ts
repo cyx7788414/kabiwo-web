@@ -11,8 +11,9 @@ import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 import { HomeComponent } from './home/home.component';
 import { BlogComponent } from './blog/blog.component';
-import { DetailComponent } from './detail/detail.component';
+import { DetailComponent } from './blog/detail/detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { NgZorroAntdMobileModule } from 'ng-zorro-antd-mobile';
 
 registerLocaleData(zh);
 
@@ -31,6 +32,7 @@ registerLocaleData(zh);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgZorroAntdMobileModule
   ],
   providers: [{ provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
