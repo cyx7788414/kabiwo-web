@@ -3,6 +3,7 @@ import { BlogService } from '../blog.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, ParamMap, Router, RouterEvent, NavigationStart} from '@angular/router';
 import * as marked from 'marked';
+import * as highlight from 'highlight.js';
 import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
@@ -70,7 +71,12 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.loading = false;
         this.blogDetailHtml = marked(response.replace(/\]\(\.\//g, v => {
           return `](${this.blogService.baseUrl}${this.article.path.split('./')[1]}/`;
-        }));
+        }), {
+          highlight: (code, lang) => {
+            const validLanguage = highlight.getLanguage(lang) ? lang : 'plaintext';
+            return highlight.highlight(validLanguage, code).value;
+          }
+        });
       },
       error: err => {
         console.log(err)
