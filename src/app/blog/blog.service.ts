@@ -64,7 +64,7 @@ export class BlogService {
   }
 
   getBlogDetail(article: any): Observable<any> {
-    let url = this.baseUrl + article.path.split('./')[1] + '/article.md';
+    let url = this.baseUrl + article.path.split('./')[1] + `/article.md?t=${(article.update / 1000).toFixed()}`;
     return this.http.get(url, {
       responseType: 'text'
     });
