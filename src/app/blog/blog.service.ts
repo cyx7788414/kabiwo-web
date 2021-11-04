@@ -9,7 +9,9 @@ import { NzMessageService } from 'ng-zorro-antd';
 export class BlogService {
 
   articleList: any[] = [];
+
   baseUrl: string = `https://cyx7788414.github.io/blog/`;
+  cdnBaseUrl: string = `https://cdn.jsdelivr.net/gh/cyx7788414/blog@master/`;
   
   colorList: string[] = ['magenta', 'red', 'volcano', 'orange', 'gold', 'lime', 'green', 'cyan', 'blue', 'geekblue', 'purple'];
   lastDataSave: any;
@@ -29,9 +31,9 @@ export class BlogService {
     private message: NzMessageService
   ) { }
 
-  getBlogData(refresh?: boolean): Subject<any> {
+  getBlogData(refresh?: boolean, useBaseUrl?: boolean): Subject<any> {
     if (refresh || !this.lastDataSave) {
-      let url = this.baseUrl + `index.json`;
+      let url = (useBaseUrl?this.baseUrl:this.cdnBaseUrl) + `index.json`;
       this.http.get(url).subscribe({
         next: (result: any) => {
           this.lastDataSave = result;
@@ -51,6 +53,10 @@ export class BlogService {
         },
         error: err => {
           console.log(err);
+          if (!useBaseUrl) {
+            this.getBlogData(refresh, true);
+            return;
+          }
           this.getBlogDataSubject.next('error');
           this.message.error('拉取文章列表失败');
         }
@@ -63,8 +69,8 @@ export class BlogService {
     return this.getBlogDataSubject;
   }
 
-  getBlogDetail(article: any): Observable<any> {
-    let url = this.baseUrl + article.path.split('./')[1] + `/article.md?t=${(article.update / 1000).toFixed()}`;
+  getBlogDetail(article: any, useBaseUrl?: boolean): Observable<any> {
+    let url = (useBaseUrl?this.baseUrl:this.cdnBaseUrl) + article.path.split('./')[1] + `/article.md?t=${(article.update / 1000).toFixed()}`;
     return this.http.get(url, {
       responseType: 'text'
     });

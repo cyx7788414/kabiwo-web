@@ -61,12 +61,12 @@ export class DetailComponent implements OnInit, OnDestroy {
     });
   }
 
-  private getArticle(): void {
+  private getArticle(useBaseUrl?: boolean): void {
     if (!this.articleId || this.articleList.length === 0) {
       return;
     }
     this.article = this.articleList.find(v => v.id + '' === this.articleId);
-    this.blogService.getBlogDetail(this.article).subscribe({
+    this.blogService.getBlogDetail(this.article, useBaseUrl).subscribe({
       next: response => {
         this.loading = false;
         this.blogDetailHtml = marked(response.replace(/\]\(\.\//g, v => {
@@ -79,7 +79,11 @@ export class DetailComponent implements OnInit, OnDestroy {
         });
       },
       error: err => {
-        console.log(err)
+        console.log(err);
+        if (!useBaseUrl) {
+          this.getArticle(true);
+          return;
+        }
         this.loading = false;
         this.message.error('拉取文章详情失败');
       }
