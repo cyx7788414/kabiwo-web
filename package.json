@@ -24,7 +24,7 @@
     "core-js": "^2.5.4",
     "github-markdown-css": "^3.0.1",
     "highlight.js": "^9.18.1",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^12.3.2",
     "marked": "^0.8.0",
     "ng-zorro-antd": "^8.5.2",
     "ng-zorro-antd-mobile": "^1.0.3",
